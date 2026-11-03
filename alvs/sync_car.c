@@ -31,6 +31,10 @@ void station_load_car(struct station *station, int count)
 {
 	pthread_mutex_lock(&station->lock);
 
+	/* valor invalido: carro com assentos negativos e tratado como carro sem assentos */
+	if (count < 0)
+		count = 0;
+
 	station->assentos_livres = count;
 
 	/* acorda todos os passageiros: varios podem embarcar ao mesmo tempo */
