@@ -13,9 +13,3 @@ make        # compila e gera ./sync_car
 make test   # executa 100 vezes seguidas
 make clean  # remove o executável
 ```
-
-## Gerar o .tar da entrega
-
-```sh
-tar -cvf alvs.tar alvs
-```
