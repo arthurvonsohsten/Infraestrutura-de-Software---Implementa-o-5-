@@ -1,0 +1,81 @@
+Script started on 2026-11-03 09:53:30-03:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="140" LINES="10"]
+[?2004h]0;arthur@DESKTOP-RHT89M8: /mnt/c/Users/Adriana/Desktop/I5SO/alvs[01;32marthur@DESKTOP-RHT89M8[00m:[01;34m/mnt/c/Users/Adriana/Desktop/I5SO/alvs[00m$ date
+[?2004lTue Nov  3 09:53:53 -03 2026
+[?2004h]0;arthur@DESKTOP-RHT89M8: /mnt/c/Users/Adriana/Desktop/I5SO/alvs[01;32marthur@DESKTOP-RHT89M8[00m:[01;34m/mnt/c/Users/Adriana/Desktop/I5SO/alvs[00m$ 
+[?2004l[?2004h]0;arthur@DESKTOP-RHT89M8: /mnt/c/Users/Adriana/Desktop/I5SO/alvs[01;32marthur@DESKTOP-RHT89M8[00m:[01;34m/mnt/c/Users/Adriana/Desktop/I5SO/alvs[00m$ whoami
+[?2004larthur
+[?2004h]0;arthur@DESKTOP-RHT89M8: /mnt/c/Users/Adriana/Desktop/I5SO/alvs[01;32marthur@DESKTOP-RHT89M8[00m:[01;34m/mnt/c/Users/Adriana/Desktop/I5SO/alvs[00m$ pwd
+[?2004l/mnt/c/Users/Adriana/Desktop/I5SO/alvs
+[?2004h]0;arthur@DESKTOP-RHT89M8: /mnt/c/Users/Adriana/Desktop/I5SO/alvs[01;32marthur@DESKTOP-RHT89M8[00m:[01;34m/mnt/c/Users/Adriana/Desktop/I5SO/alvs[00m$ [7muname -a; gcc --version | head -1[27muname -a; gcc --version | head -1
+[?2004lLinux DESKTOP-RHT89M8 6.18.54.1-microsoft-standard-WSL2 #1 SMP PREEMPT_DYNAMIC Tue Oct  6 19:13:07 UTC 2026 x86_64 GNU/Linux
+gcc (Ubuntu 15.2.0-16ubuntu1) 15.2.0
+[?2004h]0;arthur@DESKTOP-RHT89M8: /mnt/c/Users/Adriana/Desktop/I5SO/alvs[01;32marthur@DESKTOP-RHT89M8[00m:[01;34m/mnt/c/Users/Adriana/Desktop/I5SO/alvs[00m$ make clean && make
+[?2004lrm -f sync_car teste_limites *.o
+gcc -Wall -pthread -o sync_car sync_car.c sync_car_test.c
+[?2004h]0;arthur@DESKTOP-RHT89M8: /mnt/c/Users/Adriana/Desktop/I5SO/alvs[01;32marthur@DESKTOP-RHT89M8[00m:[01;34m/mnt/c/Users/Adriana/Desktop/I5SO/alvs[00m$ [7m./sync_car[27m./sync_car
+[?2004lcar entering station with 43 free seats
+car departed station with 43 new passenger(s) (expected 43)
+car entering station with 18 free seats
+car departed station with 18 new passenger(s) (expected 18)
+car entering station with 12 free seats
+car departed station with 12 new passenger(s) (expected 12)
+car entering station with 23 free seats
+car departed station with 23 new passenger(s) (expected 23)
+car entering station with 21 free seats
+car departed station with 4 new passenger(s) (expected 4)
+Looks good!
+[?2004h]0;arthur@DESKTOP-RHT89M8: /mnt/c/Users/Adriana/Desktop/I5SO/alvs[01;32marthur@DESKTOP-RHT89M8[00m:[01;34m/mnt/c/Users/Adriana/Desktop/I5SO/alvs[00m$ make test
+[?2004l100 execucoes OK
+[?2004h]0;arthur@DESKTOP-RHT89M8: /mnt/c/Users/Adriana/Desktop/I5SO/alvs[01;32marthur@DESKTOP-RHT89M8[00m:[01;34m/mnt/c/Users/Adriana/Desktop/I5SO/alvs[00m$ make çimites[K[K[K[K[K[K[Klimites
+[?2004lgcc -Wall -pthread -o teste_limites sync_car.c teste_limites.c
+./teste_limites
+invalido: carro com -5 assentos, sem passageiros   total esperado=0 obtido=0 OK
+limite: carro com 0 assentos, sem passageiros      total esperado=0 obtido=0 OK
+limite: 3 esperando, carro com 0 assentos          total esperado=0 obtido=0 OK
+invalido: 3 esperando, carro com -1 assentos       total esperado=0 obtido=0 OK
+3 esperando, carro com 10 assentos                 total esperado=3 obtido=3 OK
+5 esperando, carro com 2 assentos                  total esperado=5 obtido=5 OK
+3 restantes, carro com exatamente 3 assentos       total esperado=8 obtido=8 OK
+limite: ninguem esperando, carro com 4 assentos    total esperado=8 obtido=8 OK
+Todos os casos passaram
+[?2004h]0;arthur@DESKTOP-RHT89M8: /mnt/c/Users/Adriana/Desktop/I5SO/alvs[01;32marthur@DESKTOP-RHT89M8[00m:[01;34m/mnt/c/Users/Adriana/Desktop/I5SO/alvs[00m$ [7mfor i in $(seq 1 1000); do ./sync_car >/dev/null || echo FALHA; done; echo fi[27m[7mm[27m[A]0;arthur@DESKTOP-RHT89M8: /mnt/c/Users/Adriana/Desktop/I5SO/alvs[01;32marthur@DESKTOP-RHT89M8[00m:[01;34m/mnt/c/Users/Adriana/Desktop/I5SO/alvs[00m$ for i in $(seq 1 1000); do ./sync_car >/dev/null || echo FALHA; done; echo fim
+[?2004l
+
+fim
+[?2004h]0;arthur@DESKTOP-RHT89M8: /mnt/c/Users/Adriana/Desktop/I5SO/alvs[01;32marthur@DESKTOP-RHT89M8[00m:[01;34m/mnt/c/Users/Adriana/Desktop/I5SO/alvs[00m$ 
+[?2004l[?2004h]0;arthur@DESKTOP-RHT89M8: /mnt/c/Users/Adriana/Desktop/I5SO/alvs[01;32marthur@DESKTOP-RHT89M8[00m:[01;34m/mnt/c/Users/Adriana/Desktop/I5SO/alvs[00m$ 
+[?2004l[?2004h]0;arthur@DESKTOP-RHT89M8: /mnt/c/Users/Adriana/Desktop/I5SO/alvs[01;32marthur@DESKTOP-RHT89M8[00m:[01;34m/mnt/c/Users/Adriana/Desktop/I5SO/alvs[00m$ [7mgcc -g -fsanitize=thread -pthread -o tsan sync_car.c sync_car_test.c && ./tsa[27m[7mn[27m[7m 2>&1 | grep -E "SUMMARY|Looks good"[27m[A]0;arthur@DESKTOP-RHT89M8: /mnt/c/Users/Adriana/Desktop/I5SO/alvs[01;32marthur@DESKTOP-RHT89M8[00m:[01;34m/mnt/c/Users/Adriana/Desktop/I5SO/alvs[00m$ gcc -g -fsanitize=thread -pthread -o tsan sync_car.c sync_car_test.c && ./tsan 2>&1 | grep -E "SUMMARY|Looks good"
+[?2004l[01;31m[KSUMMARY[m[K: ThreadSanitizer: data race /mnt/c/Users/Adriana/Desktop/I5SO/alvs/sync_car_test.c:25 in passenger_thread
+[01;31m[KSUMMARY[m[K: ThreadSanitizer: data race /mnt/c/Users/Adriana/Desktop/I5SO/alvs/sync_car_test.c:137 in main
+[01;31m[KSUMMARY[m[K: ThreadSanitizer: data race /mnt/c/Users/Adriana/Desktop/I5SO/alvs/sync_car_test.c:108 in main
+[01;31m[KSUMMARY[m[K: ThreadSanitizer: thread leak /mnt/c/Users/Adriana/Desktop/I5SO/alvs/sync_car_test.c:87 in main
+[01;31m[KSUMMARY[m[K: ThreadSanitizer: thread leak /mnt/c/Users/Adriana/Desktop/I5SO/alvs/sync_car_test.c:111 in main
+[01;31m[KLooks good[m[K!
+[?2004h]0;arthur@DESKTOP-RHT89M8: /mnt/c/Users/Adriana/Desktop/I5SO/alvs[01;32marthur@DESKTOP-RHT89M8[00m:[01;34m/mnt/c/Users/Adriana/Desktop/I5SO/alvs[00m$ [7mrm -f tsan[27mrm -f tsan
+[?2004l[?2004h]0;arthur@DESKTOP-RHT89M8: /mnt/c/Users/Adriana/Desktop/I5SO/alvs[01;32marthur@DESKTOP-RHT89M8[00m:[01;34m/mnt/c/Users/Adriana/Desktop/I5SO/alvs[00m$ [7mgrep -n "sem_" sync_car.c; echo "semaforos: $?"[27mgrep -n "sem_" sync_car.c; echo "semaforos: $?"
+[?2004lsemaforos: 1
+[?2004h]0;arthur@DESKTOP-RHT89M8: /mnt/c/Users/Adriana/Desktop/I5SO/alvs[01;32marthur@DESKTOP-RHT89M8[00m:[01;34m/mnt/c/Users/Adriana/Desktop/I5SO/alvs[00m$ [7mgrep -c "pthread_mutex_t" sync_car.h[27mgrep -c "pthread_mutex_t" sync_car.h
+[?2004l1
+[?2004h]0;arthur@DESKTOP-RHT89M8: /mnt/c/Users/Adriana/Desktop/I5SO/alvs[01;32marthur@DESKTOP-RHT89M8[00m:[01;34m/mnt/c/Users/Adriana/Desktop/I5SO/alvs[00m$ [7mgrep -n "pthread_" sync_car.c[27mgrep -n "pthread_" sync_car.c
+[?2004l[32m[K6[m[K[36m[K:[m[K * [01;31m[Kpthread_[m[Kcond_wait, sempre dentro de um while.
+[32m[K16[m[K[36m[K:[m[K	[01;31m[Kpthread_[m[Kmutex_init(&station->lock, NULL);
+[32m[K17[m[K[36m[K:[m[K	[01;31m[Kpthread_[m[Kcond_init(&station->chegou_carro, NULL);
+[32m[K18[m[K[36m[K:[m[K	[01;31m[Kpthread_[m[Kcond_init(&station->embarque_fim, NULL);
+[32m[K32[m[K[36m[K:[m[K	[01;31m[Kpthread_[m[Kmutex_lock(&station->lock);
+[32m[K42[m[K[36m[K:[m[K		[01;31m[Kpthread_[m[Kcond_broadcast(&station->chegou_carro);
+[32m[K46[m[K[36m[K:[m[K		[01;31m[Kpthread_[m[Kcond_wait(&station->embarque_fim, &station->lock);
+[32m[K51[m[K[36m[K:[m[K	[01;31m[Kpthread_[m[Kmutex_unlock(&station->lock);
+[32m[K60[m[K[36m[K:[m[K	[01;31m[Kpthread_[m[Kmutex_lock(&station->lock);
+[32m[K65[m[K[36m[K:[m[K		[01;31m[Kpthread_[m[Kcond_wait(&station->chegou_carro, &station->lock);
+[32m[K71[m[K[36m[K:[m[K	[01;31m[Kpthread_[m[Kmutex_unlock(&station->lock);
+[32m[K80[m[K[36m[K:[m[K	[01;31m[Kpthread_[m[Kmutex_lock(&station->lock);
+[32m[K85[m[K[36m[K:[m[K		[01;31m[Kpthread_[m[Kcond_signal(&station->embarque_fim);
+[32m[K87[m[K[36m[K:[m[K	[01;31m[Kpthread_[m[Kmutex_unlock(&station->lock);
+[?2004h]0;arthur@DESKTOP-RHT89M8: /mnt/c/Users/Adriana/Desktop/I5SO/alvs[01;32marthur@DESKTOP-RHT89M8[00m:[01;34m/mnt/c/Users/Adriana/Desktop/I5SO/alvs[00m$ [7mmake clean[27mmake clean
+[?2004lrm -f sync_car teste_limites *.o
+[?2004h]0;arthur@DESKTOP-RHT89M8: /mnt/c/Users/Adriana/Desktop/I5SO/alvs[01;32marthur@DESKTOP-RHT89M8[00m:[01;34m/mnt/c/Users/Adriana/Desktop/I5SO/alvs[00m$ date
+[?2004lTue Nov  3 10:02:29 -03 2026
+[?2004h]0;arthur@DESKTOP-RHT89M8: /mnt/c/Users/Adriana/Desktop/I5SO/alvs[01;32marthur@DESKTOP-RHT89M8[00m:[01;34m/mnt/c/Users/Adriana/Desktop/I5SO/alvs[00m$ eci[K[Kxt[K[Kxit
+[?2004lexit
+
+Script done on 2026-11-03 10:02:45-03:00 [COMMAND_EXIT_CODE="0"]
