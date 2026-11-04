@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -Wall -pthread
 ALVO = sync_car
-FONTES = sync_car.c sync_car_test.c
+FONTES = sync_car.c sync_car-runner.c
 
 all: $(ALVO)
 
