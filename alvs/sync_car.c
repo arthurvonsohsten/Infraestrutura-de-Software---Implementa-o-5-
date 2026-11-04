@@ -1,15 +1,7 @@
-/*
- * sync_car.c - Sincronizacao do Metro (METROREC)
- *
- * Usa apenas um mutex e duas variaveis de condicao por estacao.
- * Nenhuma funcao faz busy-wait: quem precisa esperar dorme em
- * pthread_cond_wait, sempre dentro de um while.
- */
+/* sync_car.c - sincronizacao do metro: 1 mutex, 2 conds, sem busy-wait */
 
 #include <pthread.h>
 #include "sync_car.h"
-
-/* A struct station esta declarada em sync_car.h (incluido acima). */
 
 void station_init(struct station *station)
 {
@@ -22,22 +14,17 @@ void station_init(struct station *station)
 	station->passageiros_embarcando = 0;
 }
 
-/*
- * Chamada pelo carro quando abre as portas. So retorna quando:
- * ninguem esta no meio do embarque E (o carro lotou OU nao ha mais
- * passageiros esperando).
- */
+/* carro: so parte quando ninguem embarca e (lotou ou fila vazia) */
 void station_load_car(struct station *station, int count)
 {
 	pthread_mutex_lock(&station->lock);
 
-	/* valor invalido: carro com assentos negativos e tratado como carro sem assentos */
 	if (count < 0)
 		count = 0;
 
 	station->assentos_livres = count;
 
-	/* acorda todos os passageiros: varios podem embarcar ao mesmo tempo */
+	/* acorda todos: embarque simultaneo */
 	if (count > 0 && station->passageiros_esperando > 0)
 		pthread_cond_broadcast(&station->chegou_carro);
 
@@ -45,16 +32,13 @@ void station_load_car(struct station *station, int count)
 	       station->passageiros_embarcando > 0)
 		pthread_cond_wait(&station->embarque_fim, &station->lock);
 
-	/* o carro vai partir: assentos que sobraram nao podem mais ser usados */
+	/* carro partiu: sobras nao valem mais */
 	station->assentos_livres = 0;
 
 	pthread_mutex_unlock(&station->lock);
 }
 
-/*
- * Chamada pelo passageiro ao chegar. So retorna quando ha um carro
- * na estacao com assento livre; nesse momento o assento fica reservado.
- */
+/* passageiro: espera assento livre e o reserva */
 void station_wait_for_car(struct station *station)
 {
 	pthread_mutex_lock(&station->lock);
@@ -71,10 +55,7 @@ void station_wait_for_car(struct station *station)
 	pthread_mutex_unlock(&station->lock);
 }
 
-/*
- * Chamada quando o passageiro ja se sentou. O ultimo a sentar
- * avisa o carro, que confere se ja pode partir.
- */
+/* passageiro sentou: o ultimo avisa o carro */
 void station_on_board(struct station *station)
 {
 	pthread_mutex_lock(&station->lock);

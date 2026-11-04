@@ -3,18 +3,15 @@
 
 #include <pthread.h>
 
-/*
- * Estado compartilhado da estacao.
- * Todos os campos sao protegidos por um UNICO lock (lock).
- */
+/* estado da estacao, protegido por um unico lock */
 struct station {
-	pthread_mutex_t lock;          /* unico mutex da estacao */
-	pthread_cond_t chegou_carro;   /* passageiros esperam aqui por um assento livre */
-	pthread_cond_t embarque_fim;   /* o carro espera aqui o embarque terminar */
+	pthread_mutex_t lock;
+	pthread_cond_t chegou_carro;   /* passageiros esperam assento */
+	pthread_cond_t embarque_fim;   /* carro espera o embarque */
 
-	int passageiros_esperando;     /* passageiros na plataforma sem assento */
-	int assentos_livres;           /* assentos do carro atual ainda nao reservados */
-	int passageiros_embarcando;    /* reservaram assento mas ainda nao sentaram */
+	int passageiros_esperando;     /* na plataforma, sem assento */
+	int assentos_livres;           /* livres no carro atual (0 = sem carro) */
+	int passageiros_embarcando;    /* com assento, ainda nao sentaram */
 };
 
 void station_init(struct station *station);

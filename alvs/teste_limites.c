@@ -1,7 +1,4 @@
-/*
- * teste_limites.c - casos limite e invalidos de sync_car.c
- * Compilar e rodar: make limites
- */
+/* teste_limites.c - casos limite e invalidos (make limites) */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -28,7 +25,7 @@ static void cria_passageiros(int n)
 		pthread_create(&t, NULL, passageiro, NULL);
 		pthread_detach(t);
 	}
-	usleep(100000); /* da tempo de todos chegarem na plataforma */
+	usleep(100000); /* espera chegarem na plataforma */
 }
 
 static void travou(int sig)

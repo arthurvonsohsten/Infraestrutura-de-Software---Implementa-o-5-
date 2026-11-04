@@ -8,13 +8,13 @@ all: $(ALVO)
 $(ALVO): $(FONTES) sync_car.h
 	$(CC) $(CFLAGS) -o $(ALVO) $(FONTES)
 
-# roda o teste 100 vezes seguidas; para no primeiro erro
+# roda 100 vezes
 test: $(ALVO)
 	@for i in $$(seq 1 100); do \
 		./$(ALVO) > /dev/null || { echo "Falhou na execucao $$i"; exit 1; }; \
 	done; echo "100 execucoes OK"
 
-# casos limite e invalidos
+# casos limite
 limites: sync_car.c teste_limites.c sync_car.h
 	$(CC) $(CFLAGS) -o teste_limites sync_car.c teste_limites.c
 	./teste_limites
