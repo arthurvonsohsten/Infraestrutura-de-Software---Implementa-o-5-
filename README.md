@@ -3,6 +3,7 @@
 Sincronização do Metrô (METROREC) com pthreads: mutex e variáveis de condição.
 
 - Código, Makefile e README da entrega: [`alvs/`](alvs/)
+- Relatório: [`alvs.pdf`](alvs.pdf)
 
 ## Uso rápido (Linux/macOS)
 
